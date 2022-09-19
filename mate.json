@@ -1,5 +1,5 @@
 {
-    "project": "project",
+    "project": "vision",
     "override_params": {
         "enabled": false,
         "cuda": false
