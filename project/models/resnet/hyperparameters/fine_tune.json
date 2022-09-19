@@ -1,22 +1,12 @@
 {
-    "train ": {
-        "module": "trainers.train",
-        "function": "train",
-        "params": {},
-        "generate_params": true
-    },
     "pytorch_lightning_module": {
         "module": "trainers.base_classification",
         "class": "LightningClassificationModule",
         "params": {
-            "params": {
-                "module": "argparse",
-                "class": "Namespace",
-                "self": true
-            },
             "classifier": {
                 "module": "modules.resnet.fine_tune",
                 "class": "ResNetTuneModel",
+                "object_key": "classifier",
                 "params": {
                     "num_classes": 10,
                     "resnet": {
@@ -27,37 +17,46 @@
                         }
                     }
                 }
-            }
-        }
-    },
-    "optimizers": {
-        "classifier": {
-            "optimizer": {
-                "module": "torch.optim",
-                "class": "Adam",
-                "params": {
-                    "lr": 0.0004,
-                    "betas": [
-                        0.5,
-                        0.999
-                    ]
-                }
             },
-            "lr_scheduler": {
-                "monitor": "val_loss",
-                "scheduler": {
-                    "module": "torch.optim.lr_scheduler",
-                    "class": "ReduceLROnPlateau",
-                    "params": {
-                        "mode": "min",
-                        "factor": 0.5,
-                        "threshold": 1e-08,
-                        "threshold_mode": "rel",
-                        "patience": 0,
-                        "verbose": true
+            "optimizers": [
+                {
+                    "optimizer": {
+                        "module": "torch.optim",
+                        "class": "Adam",
+                        "object_key": "optimizer",
+                        "params": {
+                            "lr": 0.0004,
+                            "betas": [
+                                0.5,
+                                0.999
+                            ],
+                            "params": {
+                                "function_call": "parameters",
+                                "object_key": "classifier"
+                            }
+                        }
+                    },
+                    "lr_scheduler": {
+                        "monitor": "val_loss",
+                        "scheduler": {
+                            "module": "torch.optim.lr_scheduler",
+                            "class": "ReduceLROnPlateau",
+                            "params": {
+                                "optimizer": {
+                                    "object": true,
+                                    "object_key": "optimizer"
+                                },
+                                "mode": "min",
+                                "factor": 0.5,
+                                "threshold": 1e-08,
+                                "threshold_mode": "rel",
+                                "patience": 0,
+                                "verbose": true
+                            }
+                        }
                     }
                 }
-            }
+            ]
         }
     },
     "trainer": {
