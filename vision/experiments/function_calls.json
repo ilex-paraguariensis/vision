@@ -2,6 +2,7 @@
     "pytorch_lightning_module": {
         "module": "trainers.base_classification",
         "class": "LightningClassificationModule",
+        "object_key": "pl_model",
         "params": {
             "classifier": {
                 "module": "cnn.resnet.resnet",
@@ -67,9 +68,50 @@
             }
         }
     },
+    "data": {
+        "module": "data_loaders.cifar10.data_loader",
+        "class": "CifarLightningDataModule",
+        "object_key": "data",
+        "params": {
+            "location": "./data/cifar10",
+            "batch_size": 128,
+            "image_size": [
+                256,
+                256
+            ],
+            "crop_size": 4
+        }
+    },
     "trainer": {
         "module": "pytorch_lightning",
         "class": "Trainer",
+        "object_key": "trainer",
+        "method_args": [
+            {
+                "fit": {
+                    "model": {
+                        "object": true,
+                        "object_key": "pl_model"
+                    },
+                    "datamodule": {
+                        "object": true,
+                        "object_key": "data"
+                    }
+                }
+            },
+            {
+                "test": {
+                    "model": {
+                        "object": true,
+                        "object_key": "pl_model"
+                    },
+                    "datamodule": {
+                        "object": true,
+                        "object_key": "data"
+                    }
+                }
+            }
+        ],
         "params": {
             "gpus": 1,
             "max_epochs": 100,
@@ -106,19 +148,6 @@
                     "save_dir": "./logs"
                 }
             }
-        }
-    },
-    "data": {
-        "module": "data_loaders.cifar10.data_loader",
-        "class": "CifarLightningDataModule",
-        "params": {
-            "location": "./data/cifar10",
-            "batch_size": 128,
-            "image_size": [
-                256,
-                256
-            ],
-            "crop_size": 4
         }
     }
 }
