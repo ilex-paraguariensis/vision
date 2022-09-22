@@ -44,14 +44,5 @@
                 }
             }
         ]
-    },
-    "mate": {
-        "project": "vision",
-        "override_params": {
-            "enabled": false,
-            "cuda": false
-        },
-        "results_folder": "./results",
-        "mate_version": "0.2.5"
     }
 }

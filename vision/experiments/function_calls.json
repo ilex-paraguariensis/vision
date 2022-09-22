@@ -86,19 +86,15 @@
         "object_key": "trainer",
         "method_args": [
             {
-                "fit": {
-                    "model": {
-                        "object": true,
-                        "object_key": "pl_model"
-                    },
-                    "datamodule": {
-                        "object": true,
-                        "object_key": "data"
-                    }
+                "function": "fit",
+                "params": {
+                    "model": "{pl_model}",
+                    "datamodule": "{data}"
                 }
             },
             {
-                "test": {
+                "function": "test",
+                "params": {
                     "model": "{pl_model}",
                     "datamodule": "{data}"
                 }

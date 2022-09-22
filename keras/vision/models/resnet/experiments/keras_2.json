@@ -1,7 +1,7 @@
 {
     "data": {
         "module": "data_loaders.cifar10.data_loader",
-        "function": "get_train_data_loader",
+        "function": "get_data_loader",
         "object_key": "data",
         "params": {
             "batch_size": 128
@@ -21,11 +21,17 @@
         "object_key": "model",
         "method_args": [
             {
+                "function": "load_weights",
+                "params": {
+                    "filepath": "resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5"
+                }
+            },
+            {
                 "function": "compile",
                 "params": {
                     "optimizer": {
                         "module": "tensorflow.keras.optimizers",
-                        "class_name": "Adam",
+                        "class": "Adam",
                         "params": {
                             "learning_rate": 0.001
                         }
@@ -39,19 +45,15 @@
             {
                 "function": "fit",
                 "params": {
-                    "": "{data}",
-                    "epochs": 10
+                    "": {
+                        "__object": true,
+                        "__refrence_key": "data"
+                    },
+                    "batch_size": 32,
+                    "epochs": 10,
+                    "validation_split": 0.2
                 }
             }
         ]
-    },
-    "mate": {
-        "project": "vision",
-        "override_params": {
-            "enabled": false,
-            "cuda": false
-        },
-        "results_folder": "./results",
-        "mate_version": "0.2.5"
     }
 }

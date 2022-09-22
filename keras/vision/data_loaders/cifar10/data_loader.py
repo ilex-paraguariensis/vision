@@ -3,10 +3,13 @@ from tensorflow import keras
 from tensorflow.keras import layers
 import os
 
+
 class DataLoader:
-    def __init__(self, batch_size:int = 32):
+    def __init__(self, batch_size: int = 32):
         if not os.path.exists("PetImages"):
-            os.system("curl -O https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_5340.zip")
+            os.system(
+                "curl -O https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_5340.zip"
+            )
             os.system("unzip -q kagglecatsanddogs_5340.zip")
 
             num_skipped = 0
@@ -51,9 +54,8 @@ class DataLoader:
             lambda x, y: (data_augmentation(x, training=True), y)
         )
         self.train_ds = augmented_train_ds.prefetch(buffer_size=32)
-        self.val_ds = val_ds.prefetch(
-            buffer_size=32
-        )
+        self.val_ds = val_ds.prefetch(buffer_size=32)
+
     def train_dataloader(self):
         return self.train_ds
 
@@ -62,3 +64,16 @@ class DataLoader:
 
     def test_dataloader(self):
         return self.val_ds
+
+
+loader = DataLoader()
+
+
+def get_train_data_loader(batch_size: int = 32):
+
+    return loader.train_ds
+
+
+def get_data_loader(batch_size: int = 32):
+
+    return loader.train_ds, loader.val_ds
