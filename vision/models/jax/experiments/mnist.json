@@ -11,7 +11,7 @@
         "module": "trainers.mnist_classifier",
         "function": "train",
         "params": {
-            "": "{data}",
+            "datasets": "{data}",
             "step_size": 0.001,
             "num_epochs": 10,
             "batch_size": 128,
