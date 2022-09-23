@@ -34,6 +34,7 @@ class BasicBlock(nn.Module):
         self,
         inplanes: int,
         planes: int,
+        test:str = "hey",
         stride: int = 1,
         downsample: Optional[nn.Module] = None,
         groups: int = 1,
