@@ -29,6 +29,22 @@ Then install the requirements:
 ```bash
 pip install -r requirements.txt
 ```
+Then clone this repo:
+```bash
+ git clone https://github.com/ilex-paraguariensis/vision/tree/v2
+```
+And test that everything is working by:
+```bash	
+mate list models
+```
+Should output:
+```bash
+	vit
+	lightning
+	jax
+	keras
+```
+
 <!--
 First, install the dev version of Maté from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning/tree/lightning).
 
