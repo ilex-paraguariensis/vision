@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ```
 Then clone this repo:
 ```bash
- git clone https://github.com/ilex-paraguariensis/vision/tree/v2
+ git clone https://github.com/ilex-paraguariensis/vision -b v2
 ```
 And test that everything is working by:
 ```bash	
