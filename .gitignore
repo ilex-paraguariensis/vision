@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 vision/results
 data/
+logs/
 .checkpoints_state_dict
 *.ckpt
 *.pt
