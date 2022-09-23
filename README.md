@@ -16,7 +16,19 @@ A Jupiter notebook is also available in the repository.
 
 -->
 ## Install locally
-
+First install mate by:
+```bash
+  git clone https://github.com/ilex-paraguariensis/yerbamate/tree/v2
+```
+Then move to the yerbamate directory
+```
+cd yerbamate
+python install.py
+```
+Then install the requirements:
+```bash
+pip install -r requirements.txt
+```
 <!--
 First, install the dev version of Maté from lightning branch [link](https://github.com/ilex-paraguariensis/yerbamate/tree/lightning/tree/lightning).
 
