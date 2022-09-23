@@ -2,8 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-keras/PetImages/
-pytorch-lightning/results
+vision/results
 data/
 .checkpoints_state_dict
 *.ckpt
