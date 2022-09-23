@@ -18,7 +18,7 @@ A Jupiter notebook is also available in the repository.
 ## Install locally
 First install mate by:
 ```bash
-  git clone https://github.com/ilex-paraguariensis/yerbamate/tree/v2
+  git clone https://github.com/ilex-paraguariensis/yerbamate -b v2
 ```
 Then move to the yerbamate directory
 ```
